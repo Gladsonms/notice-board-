@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notice board</title>
+</head>
+<body>
+    <div class="main">
+
+        <p class="noticeText" id="noticeText">
+             sample content   
+        </p>
+        
+    </div>
+    <style>
+        .noticeText{
+            font-size: 40px;
+            text-align: center;
+
+        }
+        .main{
+            background-color: black;
+            color: aliceblue;
+            text-align: left;
+            font-weight: bolder;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-top: auto;
+            margin-left: 5em;
+            margin-right: 3em;
+        }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var  socket = io();
+        socket.on("board_content",function (msg){
+    document.getElementById('noticeText').innerHTML = msg;
+        });
+    </script>
+
+</body>
+</html>
